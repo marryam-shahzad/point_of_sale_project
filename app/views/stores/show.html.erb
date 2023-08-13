@@ -1,0 +1,26 @@
+<h1><%= @store.name %></h1>
+
+<p><strong>Store id:</strong> <%= @store.id %></p>
+<p><strong>Location:</strong> <%= @store.location %></p>
+<p><strong>Created At:</strong> <%= @store.created_at %></p>
+<p><strong>Updated At:</strong> <%= @store.updated_at %></p>
+
+
+<% if @matching_products.any? %>
+  <h2>Matching Products:</h2>
+  <ul>
+    <% @matching_products.each do |product| %>
+      <li>
+        <strong>Name:</strong> <%= product.name %><br>
+        <strong>Price:</strong> <%= product.price %><br>
+        <strong>Quantity:</strong> <%= product.quantity %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No matching products available for this store.</p>
+<% end %>
+
+<%= link_to "Edit", edit_store_path(@store) %> |
+<%= link_to "Back to Stores", stores_path %>
+
