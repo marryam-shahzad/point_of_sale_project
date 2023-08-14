@@ -56,3 +56,18 @@ class StoresController < ApplicationController
     params.require(:store).permit(:name, :location)
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

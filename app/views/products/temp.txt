@@ -2,3 +2,22 @@
     <%= f.label :store_id %>
     <%= f.collection_select :store_id, Store.all, :id, :name, prompt: true %>
   </div>
+
+
+
+
+
+  <h1>Edit Product</h1>
+<%= render 'form' %>
+<%= link_to "Show", @product %> |
+<%= link_to "Back to Products", products_path %>
+
+
+
+
+<% if @product.price %>
+  <h2>Price</h2>
+  <p><strong>Price:</strong> <%= @product.price.price %></p>
+<% else %>
+  <p>No price available.</p>
+<% end %>
