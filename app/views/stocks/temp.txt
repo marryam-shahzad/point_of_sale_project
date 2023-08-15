@@ -1,0 +1,21 @@
+
+<!-- <h1>Stocks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Store</th>
+      <th>Product</th>
+      <th>Quantity Available</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stocks.each do |stock| %>
+      <tr>
+        <td><%= link_to stock.store.name, store_path(stock.store) %></td>
+        <td><%= link_to stock.product.name, product_path(stock.product) %></td>
+        <td><%= stock.quantity_available %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> -->

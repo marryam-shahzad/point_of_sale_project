@@ -1,0 +1,7 @@
+<h1><%= @store.name %> Products</h1>
+
+<ul>
+  <% @products.each do |product| %>
+    <li><%= link_to product.name, product_stock_path(@store, product) %></li>
+  <% end %>
+</ul>

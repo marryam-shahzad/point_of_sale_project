@@ -1,0 +1,32 @@
+<h1>Stocks</h1>
+
+<%= link_to "Go to Stores", stores_path %>
+<h2>Stores:</h2>
+<ul>
+  <% @stores.each do |store| %>
+    <li><%= link_to store.name, store_path(store) %></li>
+  <% end %>
+</ul>
+
+
+<%= link_to "Go to Products", products_path %>
+<table>
+  <tr>
+    <th>Product Name</th>
+    <th>Quanity Available</th>
+    <th>Price</th>
+  </tr>
+   <% @products.each do |product| %>
+    <tr>
+      <td><%= link_to product.name, product_path(product) %></td>
+      <td><%= product.quantity %></td>
+      <td><%= product.price %></td>
+      
+    </tr>
+  <% end %>
+</table>
+
+
+
+
+

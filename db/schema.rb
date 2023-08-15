@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_14_082030) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_14_101430) do
   create_table "prices", force: :cascade do |t|
     t.decimal "value"
     t.integer "product_id", null: false
@@ -30,13 +30,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_082030) do
     t.index ["store_id"], name: "index_products_on_store_id"
   end
 
-  create_table "stock_availabilities", force: :cascade do |t|
-    t.integer "store_id", null: false
-    t.integer "product_id", null: false
+  create_table "stocks", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "store_id"
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_stock_availabilities_on_product_id"
-    t.index ["store_id"], name: "index_stock_availabilities_on_store_id"
+    t.index ["product_id"], name: "index_stocks_on_product_id"
+    t.index ["store_id"], name: "index_stocks_on_store_id"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -48,6 +49,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_082030) do
 
   add_foreign_key "prices", "products"
   add_foreign_key "products", "stores"
-  add_foreign_key "stock_availabilities", "products"
-  add_foreign_key "stock_availabilities", "stores"
+  add_foreign_key "stocks", "products"
+  add_foreign_key "stocks", "stores"
 end
