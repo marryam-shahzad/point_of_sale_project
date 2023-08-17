@@ -35,10 +35,39 @@
   </div>
 
 
-    <div class="field">
+  <div class="field">
     <%= f.label :store_id %>
     <%= f.collection_select :store_id, Store.all, :id, :name, prompt: true %>
   </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div>
+    <%= f.collection_check_boxes :store_ids, @stores, :id, :name do |b| %>
+      <div class="collection-check-box">
+        <%= b.check_box + b.label %>
+        <%= text_field_tag "prices[#{b.value}]", type: 'number', placeholder: 'Price' %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= f.collection_check_boxes :store_ids, @stores, :id, :name do |b| %>
+      <div class="collection-check-box">
+        <%= b.check_box + b.label %>
+        <%= f.text_field :product_stores, "store_ids[#{b.value}]", type: 'number', placeholder: 'Price' %>
+      </div>
+  <% end %>
+  
+  
+
+  
+
+
+ 
+
 
 
   <div class="actions">

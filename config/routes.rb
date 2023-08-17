@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   resources :products
   resources :stores
   resources :stocks
+  post 'products/:id', to: 'products#del_product'
 
-  resources :stocks, only: [:index] do
-    member do
-      get 'store/:store_id', to: 'stocks#show_store', as: :store
-      get 'product/:product_id', to: 'stocks#show_product', as: :product
-    end
-  end
+  # resources :stocks, only: [:index] do
+  #   member do
+  #     get 'store/:store_id', to: 'stocks#show_store', as: :store
+  #     get 'product/:product_id', to: 'stocks#show_product', as: :product
+  #   end
+  # end
 
 
 

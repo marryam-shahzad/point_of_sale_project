@@ -35,6 +35,12 @@ class Product < ApplicationRecord
   belongs_to :store
   has_one :stock
   validates :quantity, numericality: { greater_than: 0, message: "must be greater than 0" }
+  has_one_attached :image
+  has_many :product_stores
+  has_many :stores, through: :product_stores
+
+  accepts_nested_attributes_for :product_stores
+  
 end
 
 

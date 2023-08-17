@@ -21,3 +21,52 @@
 <% else %>
   <p>No price available.</p>
 <% end %>
+
+
+ <div>
+    <%= f.collection_check_boxes :store_ids, Store.all, :id, :name do |b| %>
+    <label class="collection_check_boxes">
+     <%= b.check_box + b.text %>
+    Price: <%= b.text_field "price_store_#{b.value}", type: 'number' %>
+    </label>
+    <% end %>
+
+  </div>
+
+
+
+  <h2>Stores and Prices:</h2>
+<ul>
+  <% @product.product_stores.each do |product_store| %>
+    <li><strong><%= product_store.store.name %>:</strong> <%= number_to_currency(product_store.price) %></li>
+  <% end %>
+</ul>
+
+
+<div>
+    <%= f.collection_check_boxes :store_ids, Store.all, :id, :name do |b| %>
+      <div class="collection-check-box">
+        <%= b.check_box + b.label %>
+        <%= b.fields_for :product_stores do |ps| %>
+          <%= ps.hidden_field :store_id, value: b.value %>
+          <%= ps.number_field :price, placeholder: 'Price' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+
+
+
+
+  <div>
+    <%= f.collection_check_boxes :store_ids, Store.all, :id, :name do |b| %>
+      <div class="collection-check-box">
+        <%= b.check_box + b.label %>
+        <div class="nested-fields">
+          <%= b.hidden_field :store_id, value: b.value %>
+          <%= text_field_tag "product[product_stores_attributes][#{b.value}][price]", nil, placeholder: 'Price' %>
+        </div>
+      </div>
+    <% end %>
+  </div>

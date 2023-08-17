@@ -27,6 +27,18 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+
+
+
+
+# Use faker to generate data 
+gem 'faker', '~> 2.0'
+
+
+#using will_paginate for pagination
+gem 'will_paginate', '~> 3.3'
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
